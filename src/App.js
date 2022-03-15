@@ -21,19 +21,26 @@ class App extends Component {
         });
     };
 
-    onClick() {
+    onClick(event) {
+        event.preventDefault();
         this.setState({
-            list: [...this.state.list, this.state.value],
+            list: this.state.list.concat(this.state.value),
+            value: '',
         });
     };
 
     render() {
         return (
             <div>
-                <div id={'container'}>
-                    <input onChange={this.saveValue} type="text"/>
-                    <button onClick={this.onClick}>Submit</button>
-                </div>
+                <form id={'container'}>
+                    <label htmlFor="taskInput">Enter task</label>
+                    <input
+                        onChange={this.saveValue}
+                        value={this.state.value}
+                        type="text"
+                        id="taskInput"/>
+                    <button onClick={this.onClick} type="submit">Submit</button>
+                </form>
                 <Overview array={this.state.list}/>
             </div>
         )

@@ -1,6 +1,7 @@
 #container {
   display: grid;
-  grid-template-columns: 100px 70px;
+  grid-template-columns: 70px 150px 70px;
   gap: 10px;
   justify-content: center;
+  align-items: center;
 }
