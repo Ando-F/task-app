@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import uniqid from "uniqid";
 
 class Overview extends Component {
     constructor(props) {
@@ -6,13 +7,14 @@ class Overview extends Component {
     }
 
     render() {
-        const {saveValue, logValue} = this.props;
+        const {array} = this.props;
 
         return (
-            <div id={'container'}>
-                <input onChange={saveValue} type="text"/>
-                <button onClick={logValue}>Submit</button>
-            </div>
+            <ul>
+                {array.map(item => (
+                    <li key={uniqid()}>{item}</li>
+                ))}
+            </ul>
         )
     }
 }

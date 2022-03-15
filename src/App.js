@@ -1,7 +1,6 @@
 import './App.css';
 import Overview from "./components/Overview";
-import {Component} from "react";
-import uniqid from "uniqid";
+import React, {Component} from "react";
 
 class App extends Component {
     constructor(props) {
@@ -25,20 +24,17 @@ class App extends Component {
     onClick() {
         this.setState({
             list: [...this.state.list, this.state.value],
-        }, () => {
-            console.log(this.state.list);
         });
     };
 
     render() {
         return (
             <div>
-                <Overview saveValue={this.saveValue} logValue={this.onClick}/>
-                <ul>
-                    {this.state.list.map(item => (
-                        <li key={uniqid()}>{item}</li>
-                    ))}
-                </ul>
+                <div id={'container'}>
+                    <input onChange={this.saveValue} type="text"/>
+                    <button onClick={this.onClick}>Submit</button>
+                </div>
+                <Overview array={this.state.list}/>
             </div>
         )
     }
